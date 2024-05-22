@@ -1,0 +1,42 @@
+server:
+  port: 8010
+spring:
+  application:
+    name: ocean
+    port:
+  datasource:
+    url: jdbc:postgresql://localhost:5432/ocean
+    driver-class-name: org.postgresql.Driver
+    username: postgres
+    password: admin
+knife4j:
+  enable: true
+  openapi:
+    title: 河海大学接口文档
+    description: "河海大学接口文档"
+    version: v1.0.0
+    group:
+      default:
+        group-name: default
+        api-rule: package
+        api-rule-resources:
+          - com.clear.ocean.controller
+ocean:
+  auth:
+    excludePaths:
+      - /user/login
+  jwt:
+    location: classpath:ocean.jks
+    alias: 123456
+    password: 123456
+    tokenTTL: 30m
+logging:
+  level:
+    com.clear.ocean: debug
+  pattern:
+    dateformat: HH:mm:ss:SSS
+  file:
+    path: "logs/${spring.application.name}"
+mybatis-plus:
+  configuration:
+    log-impl: org.apache.ibatis.logging.stdout.StdOutImpl
