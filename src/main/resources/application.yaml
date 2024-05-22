@@ -1,26 +1,26 @@
 server:
-  port: 8010
+  port: 8090
 spring:
   application:
-    name: ocean
+    name: baseProject
     port:
   datasource:
-    url: jdbc:postgresql://localhost:5432/ocean
-    driver-class-name: org.postgresql.Driver
-    username: postgres
-    password: admin
+    url: jdbc:mysql://192.168.145.128:3306/mp
+    driver-class-name: com.mysql.cj.jdbc.Driver
+    username: root
+    password: 123
 knife4j:
   enable: true
   openapi:
-    title: 河海大学接口文档
-    description: "河海大学接口文档"
+    title: 基础项目接口文档
+    description: "基础项目接口文档"
     version: v1.0.0
     group:
       default:
         group-name: default
         api-rule: package
         api-rule-resources:
-          - com.clear.ocean.controller
+          - com.clear.controller
 ocean:
   auth:
     excludePaths:
@@ -40,3 +40,4 @@ logging:
 mybatis-plus:
   configuration:
     log-impl: org.apache.ibatis.logging.stdout.StdOutImpl
+    default-enum-type-handler: com.baomidou.mybatisplus.core.handlers.MybatisEnumTypeHandler #枚举类型转换
